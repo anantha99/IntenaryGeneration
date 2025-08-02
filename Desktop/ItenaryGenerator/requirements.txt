@@ -1,0 +1,9 @@
+google-adk==0.1.0
+litellm>=1.65.5
+deprecated>=1.2.14
+pytest>=7.0.0
+python-dotenv>=1.0.0
+rich>=13.0.0
+langchain_community
+tavily-python
+langchain-tavily

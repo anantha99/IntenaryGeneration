@@ -1,0 +1,9 @@
+Collecting deprecated
+  Downloading Deprecated-1.2.18-py2.py3-none-any.whl.metadata (5.7 kB)
+Collecting wrapt<2,>=1.10 (from deprecated)
+  Downloading wrapt-1.17.2-cp312-cp312-win_amd64.whl.metadata (6.5 kB)
+Downloading Deprecated-1.2.18-py2.py3-none-any.whl (10.0 kB)
+Downloading wrapt-1.17.2-cp312-cp312-win_amd64.whl (38 kB)
+Installing collected packages: wrapt, deprecated
+
+Successfully installed deprecated-1.2.18 wrapt-1.17.2

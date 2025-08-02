@@ -1,0 +1,211 @@
+# Product Requirements Document (PRD)
+
+## 1. Document Information
+- **Product Name**: Personalized Travel Itinerary Generator
+- **Version**: 1.4
+- **Date**: August 02, 2025
+- **Author**: Ananthapadmanabha K J N
+- **Status**: Final
+
+## 2. Product Overview
+### 2.1 Objective
+The objective of this product is to automatically generate personalized travel itineraries based on user preferences. The system will leverage AI agents to interpret a general user request (e.g., "Hey I am planning to visit Kashmir over the weekend"), ask follow-up questions to gather missing details, and produce a structured itinerary. This will help users plan trips efficiently without manual research, focusing on destinations, activities (including top must-visit places with significance, recommended things to do, and approx time), and accommodations tailored to their needs, with a final approx trip cost.
+
+### 2.2 Scope
+- **In Scope**:
+  - Interpret general user requests and ask follow-up questions for missing details.
+  - Collect user preferences via interactive prompts or JSON input.
+  - Use AI agents to plan activities (including top must-visit places with significance, recommended things to do, and approx time) and suggest accommodations.
+  - Provide default recommendations for unspecified preferences (e.g., budget).
+  - Output the itinerary in a predefined schema, plus a detailed itinerary report with timed day-by-day breakdown.
+  - Estimate and include a final approx trip cost.
+  - Integrate search and reasoning capabilities for real-time data (e.g., via web searches for current travel info).
+- **Out of Scope**:
+  - Real-time booking integrations (e.g., APIs for flights/hotels).
+  - User authentication or persistent storage of itineraries.
+  - Mobile/web UI development (focus on backend Python script or API).
+  - Handling payments or legal travel advisories.
+
+### 2.3 Goals and Success Metrics
+- **Goals**:
+  - Provide accurate, personalized itineraries in under 30 seconds after collecting preferences.
+  - Ensure outputs are highly relevant to user preferences (e.g., budget-aligned suggestions).
+  - Leverage AI for dynamic adaptation (e.g., seasonal activities).
+- **Success Metrics**:
+  - User satisfaction score > 80% (based on simulated feedback).
+  - Accuracy of suggestions (e.g., 95% match to preferences via manual review, with correct must-visit places and their significance).
+  - System uptime and response time benchmarks.
+
+## 3. Target Users and Use Cases
+### 3.1 Target Users
+- Individual travelers seeking quick planning tools.
+- Couples or small groups (e.g., families) with shared preferences.
+- Tech-savvy users comfortable with Python scripts or APIs.
+
+### 3.2 User Stories
+- As a traveler, I want to provide a general request (e.g., "Visit Kashmir over the weekend") so the system asks follow-up questions to complete my preferences.
+- As a user, I want default recommendations if I don’t specify details like budget.
+- As a user, I want a day-by-day activity plan with timings and top must-visit places, including why they’re significant, recommended things to do, and approx time spent.
+- As a planner, I want accommodation options with price ranges, cost per night, ratings, and locations for easy comparison.
+- As a user, I want a final approx cost estimate for the trip.
+
+### 3.3 Use Cases
+1. **Interactive Itinerary Generation**: User provides a general request; system asks follow-up questions, provides recommendations, and outputs a full itinerary with must-visit places (significance, recommended things, approx time), detailed report, and approx cost.
+2. **Refinement**: User adjusts preferences (e.g., change budget); system regenerates.
+3. **Edge Case**: Handle invalid inputs (e.g., zero duration) or vague requests with error messages or clarifying questions.
+
+## 4. Functional Requirements
+### 4.1 Core Features
+1. **User Input Collection**:
+   - Accept a general natural language request (e.g., "Hey I am planning to visit Kashmir over the weekend").
+   - Parse the request to extract provided details (e.g., destination: Kashmir, duration: weekend ≈ 2-3 days).
+   - Identify missing details (e.g., budget, starting location, travelers) and ask follow-up questions with default recommendations, such as:
+     - Budget: "What’s your budget? I recommend 'medium' for Kashmir to balance comfort and cost."
+     - Starting Location: "Where are you traveling from? I suggest 'Delhi' as a common starting point for Kashmir."
+     - Travelers: "How many people are traveling? I’ll assume 1 traveler unless you specify otherwise."
+   - Accept preferences as a dictionary or JSON if provided directly, including:
+     - Budget (string: 'low', 'medium', 'high').
+     - Duration (integer: days).
+     - Starting Location (string: e.g., 'Delhi').
+     - Destination (string: e.g., 'Kashmir, India').
+     - Travelers (integer: number of people).
+   - Validate inputs (e.g., duration > 0) and use defaults if user skips follow-up responses.
+
+2. **Activity Planning**:
+   - Generate a list of top must-visit places at the specified destination (e.g., Dal Lake, Gulmarg for Kashmir).
+   - For each must-visit place, provide a brief significance (3 sentences) explaining why it’s a must-visit and what users shouldn’t miss (e.g., unique features, cultural importance), highly recommended things to do there that the user shouldn't miss, and approx time spent (e.g., 2-3 hours).
+   - Plan detailed activities for each day, incorporating top must-visit places, with timings (e.g., 9:00 AM - 11:00 AM: Visit Dal Lake).
+   - Align with budget, duration, and feasibility (e.g., travel time between activities); include variety such as sightseeing, meals, and rest; ensure practical pacing without rushing, with proper breaks for food and relaxation.
+
+3. **Accommodation Suggestions**:
+   - Suggest 3-5 options with details: Name, location, price range, cost per night (e.g., $100-$150), rating (e.g., 4.5/5).
+   - Filter by budget and destination.
+
+4. **Output Generation**:
+   - Format output strictly to the schema first:
+     ```
+     Destination
+     [Specified Destination]
+
+     Duration
+     [X days]
+
+     Activities
+     - [Top Must-Visit Place 1: Significance (3 sentences). Recommended things to do: [List]. Approx time: [X hours]]
+     - [Top Must-Visit Place 2: Significance (3 sentences). Recommended things to do: [List]. Approx time: [X hours]]
+     ...
+
+     Accommodation Suggestions
+     - [Suggestion 1: Name, Location, Cost per Night, Rating]
+     - [Suggestion 2: Name, Location, Cost per Night, Rating]
+     ...
+     ```
+   - Follow the schema with a detailed itinerary report, providing a day-by-day breakdown with timings (e.g., Day 1: 8:00 AM - Breakfast, 9:00 AM - Visit Place X, etc.), ensuring practical pacing with no rushing and proper breaks for food.
+   - At the end, provide a final approx cost of the trip (e.g., including accommodations, activities, meals, but excluding flights/transport unless specified).
+   - Ensure human-readable and concise.
+
+### 4.2 System Flow
+1. Parse general user request.
+2. Ask follow-up questions for missing details, providing default recommendations.
+3. Collect final preferences (user inputs or defaults).
+4. Orchestrate agents: Activities (including top places, significance, recommended things, approx time) → Accommodations → Cost Estimation.
+5. Compile schema output, then generate detailed timed itinerary report, followed by approx trip cost.
+
+## 5. Non-Functional Requirements
+### 5.1 Performance
+- Response time: < 30 seconds for generation after collecting preferences.
+- Accuracy: High accuracy in suggestions (e.g., 95% relevance to preferences, correct must-visit places, and accurate significance descriptions).
+
+### 5.2 Security and Privacy
+- No storage of user data; process in-memory.
+- Use API keys securely (e.g., environment variables for Google API).
+- Implement safety checks in agents (e.g., avoid biased suggestions).
+
+### 5.3 Reliability
+- Error handling: Graceful failures (e.g., network errors in searches).
+- Logging: Basic console logs for debugging.
+
+### 5.4 Usability
+- Simple Python script execution (e.g., `python generate_itinerary.py --request "Visit Kashmir over the weekend"`).
+- Interactive prompt flow for follow-up questions.
+- Clear documentation in code.
+
+## 6. Technology Stack
+- **Core Framework**: Google Agent Development Kit (ADK) v0.1.0 – A modular framework for building AI agents, optimized for Gemini models. Use for creating multi-agent systems with workflows.
+- **Programming Language**: Python 3.12+.
+- **Key Packages**:
+  - `google-adk`: For agent creation and orchestration.
+  - Gemini integration (via ADK's `GeminiModel`).
+  - Relevant tools: `SearchTool` (for web queries on travel data), `CodeExecutionTool` (for any computations, e.g., distance calculations).
+  - Others: `os` for environment vars, `json` for input parsing, `re` for request parsing.
+- **Models**: Gemini 1.5 Pro (or latest) for LLM-based reasoning and natural language parsing.
+- **Installation**:
+  - `pip install google-adk`
+  - Set `GOOGLE_API_KEY` environment variable.
+
+## 7. System Architecture
+### 7.1 High-Level Design
+- **Multi-Agent System** (using ADK):
+  - **RequestParser Agent**: LlmAgent to parse general requests and identify missing details; generates follow-up questions.
+  - **ActivitiesPlanner Agent**: LlmAgent with SearchTool; plans daily activities including top must-visit places with significance, recommended things to do, approx time, and timings.
+  - **AccommodationSuggester Agent**: LlmAgent with SearchTool; suggests options with cost per night and ratings.
+  - **CostEstimator Agent**: LlmAgent with SearchTool; estimates final approx trip cost based on preferences, activities, and accommodations.
+- **Workflow**: SequentialWorkflowAgent to chain agents (RequestParser → Activities → Accommodations → CostEstimator).
+- **Tools Integration**: Pre-built ADK tools for search and code execution; custom prompts for personalization.
+- **Deployment**: Local Python script; optional scaling via Vertex AI or Docker.
+
+### 7.2 Data Flow
+- Input: General user request → RequestParser Agent.
+- Processing: Parse request, ask follow-up questions, collect preferences; agents query tools (e.g., search for "top must-visit places in Kashmir with significance" or "accommodations in Kashmir with ratings and costs" or "estimate trip cost for Kashmir").
+- Output: Structured schema followed by detailed timed itinerary report and final approx cost.
+
+## 8. Implementation Guidelines
+- **Setup**:
+  - Import ADK components: `LlmAgent`, `SequentialWorkflowAgent`, `SearchTool`, `GeminiModel`.
+  - Define agents with custom system prompts for parsing, planning, suggesting, and estimating.
+- **Example Code Snippet** (High-Level):
+  ```python
+  import os
+  from adk.agents import LlmAgent, SequentialWorkflowAgent
+  from adk.tools import SearchTool
+  from adk.models import GeminiModel
+
+  os.environ['GOOGLE_API_KEY'] = 'your-key'
+
+  model = GeminiModel('gemini-1.5-pro')
+
+  # Define request parser agent
+  parser_agent = LlmAgent(
+      name='RequestParser',
+      description='Parses user request and asks follow-up questions.',
+      model=model,
+      system_prompt='Parse the user request, identify missing details, and ask follow-up questions with default recommendations.'
+  )
+
+  # Define other agents including cost_estimator_agent...
+  workflow = SequentialWorkflowAgent(agents=[parser_agent, activities_agent, accommodation_agent, cost_estimator_agent])
+  result = workflow.execute(input_query)
+  # Parse and print schema, then detailed report and cost
+  ```
+- **Testing**:
+  - Unit tests for each agent, including request parsing and significance accuracy.
+  - End-to-end with sample requests (e.g., "Visit Kashmir over the weekend").
+  - Use ADK's built-in evaluation for agent performance.
+
+## 9. Assumptions and Risks
+### 9.1 Assumptions
+- Users have valid Google API access.
+- ADK remains compatible with Gemini; no major breaking changes.
+- Web search tools provide up-to-date travel data.
+- Users respond to follow-up questions or accept defaults.
+
+### 9.2 Risks and Mitigations
+- **Risk**: API rate limits – Mitigation: Implement retries and quotas.
+- **Risk**: Inaccurate parsing of vague requests – Mitigation: Use robust LLM prompts and regex for key terms.
+- **Risk**: Inaccurate suggestions or significance (e.g., due to LLM hallucinations) – Mitigation: Use grounded searches and human review prompts.
+- **Risk**: Dependency on ADK v0.1.0 (early stage) – Mitigation: Monitor for updates; fallback to basic Python if needed.
+
+## 10. Appendix
+- **References**:
+  - Google ADK Docs: https://google.github.io/adk-docs/
+  - Gemini Models: Google AI documentation.
