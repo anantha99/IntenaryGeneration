@@ -1,0 +1,122 @@
+:Q🏛️ PRIMARY TRAVEL SCHEMA
+============================================================
+
+📋 STRUCTURED TRAVEL INFORMATION
+----------------------------------------
+
+🌍 DESTINATION
+   Location: Kerala
+   Travel Type: International/Domestic Travel
+
+⏰ DURATION
+   Trip Length: 3 days
+   Travelers: 2 adults
+   Budget: 50000
+
+🎯 ACTIVITIES & ATTRACTIONS
+   Key Places to Visit:
+
+   1. Alleppey Backwaters
+      📍 Location: Alappuzha district
+      🏛️ Category: natural
+      ⭐ Significance: Alleppey, known as the 'Venice of the East,' is famous for its serene backwaters and picturesque houseboat experiences. The amber-hued backwaters and lush paddy fields create a tranquil atmosphere, perfect for relaxation. It's a unique destination that showcases Kerala's natural beauty and traditional way of life.
+      ⏱️ Duration: half day
+
+   2. Munnar
+      📍 Location: Idukki district
+      🏛️ Category: natural
+      ⭐ Significance: Munnar is a breathtaking hill station renowned for its rolling tea plantations and cool climate. It offers stunning views from spots like Top Station and Echo Point, and is home to the endangered Nilgiri Tahr in Eravikulam National Park. The Tea Museum provides insights into the history of tea production in the region.
+      ⏱️ Duration: full day
+
+   3. Fort Kochi
+      📍 Location: Kochi
+      🏛️ Category: historical
+      ⭐ Significance: Fort Kochi is a historic area blending colonial architecture with vibrant cultural scenes. It features iconic Chinese fishing nets, St. Francis Church (the oldest European church in India), and the Jewish Synagogue. The spice markets and Kathakali performances add to its rich cultural tapestry.
+      ⏱️ Duration: half day
+
+   4. Thekkady
+      📍 Location: Idukki district
+      🏛️ Category: natural
+      ⭐ Significance: Thekkady is a wildlife enthusiast's paradise, home to Periyar National Park and its diverse fauna, including Asian elephants and Bengal tigers. Visitors can enjoy bamboo rafting and night treks in the wilderness. The region also offers traditional Kathakali and Kalaripayattu performances.
+      ⏱️ Duration: full day
+
+   5. Varkala Cliffs
+      📍 Location: Thiruvananthapuram district
+      🏛️ Category: natural
+      ⭐ Significance: Varkala is famed for its stunning red sandstone cliffs overlooking golden sands and the Arabian Sea. The cliffside is dotted with cafes and restaurants, perfect for sunset views. It's also a great spot for yoga and meditation, with numerous studios along the cliff.
+      ⏱️ Duration: half day
+
+   6. Bekal Fort
+      📍 Location: Kasargod district
+      🏛️ Category: historical
+      ⭐ Significance: Bekal Fort is the largest fort in Kerala, offering panoramic views of the Arabian Sea from its ramparts. The fort's rustic architecture and historical significance make it a must-visit. Its location on the coast provides a unique blend of history and natural beauty.
+      ⏱️ Duration: 2-3 hours
+
+   7. Kovalam Beach
+      📍 Location: Thiruvananthapuram district
+      🏛️ Category: natural
+      ⭐ Significance: Kovalam is one of Kerala's most popular beach destinations, known for its golden sands and clear waters. The lighthouse beach offers stunning views, and the area is perfect for water sports. It's a great spot to relax and enjoy the coastal vibe.
+      ⏱️ Duration: half day
+
+   8. Mattancherry Palace
+      📍 Location: Kochi
+      🏛️ Category: historical
+      ⭐ Significance: Also known as the Dutch Palace, this historical site showcases Kerala's royal heritage with its intricate murals and architecture. The palace houses artifacts from the Cochin royal family, including portraits and memorabilia. It's a glimpse into the region's colonial past and cultural richness.
+      ⏱️ Duration: 2-3 hours
+
+   9. Periyar National Park
+      📍 Location: Thekkady, Idukki district
+      🏛️ Category: natural
+      ⭐ Significance: Periyar National Park is a biodiversity hotspot, home to tigers, elephants, and rare bird species. The park offers unique experiences like bamboo rafting and guided nature walks. Its scenic beauty and wildlife make it a top destination for nature lovers.
+      ⏱️ Duration: full day
+
+   10. Jewish Synagogue
+      📍 Location: Kochi
+      🏛️ Category: historical
+      ⭐ Significance: One of the oldest synagogues in the world, it features unique Chinese tiles and Belgian glass decorations. The synagogue houses historical records and artifacts of the Jewish community in Kerala. Its architecture and history reflect Kerala's multicultural heritage.
+      ⏱️ Duration: 1-2 hours
+
+   📊 Activity Summary: 10 places across 2 categories
+   📂 Categories: natural, historical
+
+🏨 ACCOMMODATIONS
+   Recommended Hotels:
+
+   1. Breeze Backwater Homes
+      📍 Location: Alappuzha
+      💰 Price: ₹6,667/night
+      💳 Total Cost: ₹20,001
+      ⭐ Rating: 4.8/5
+      🎯 Proximity: Near Alleppey Backwaters (to attractions)
+      📝 Description: Waterfront property with excellent food prepared on site and affordable backwater boat ride.
+
+   2. Green View Holiday Inn
+      📍 Location: Munnar
+      💰 Price: ₹6,667/night
+      💳 Total Cost: ₹20,001
+      ⭐ Rating: 4.2/5
+      🎯 Proximity: Near Munnar attractions (to attractions)
+      📝 Description: A good choice accommodation for those wanting to locate in Munnar itself. The staff are helpful and ...
+
+   3. Hotel Arches
+      📍 Location: Kochi
+      💰 Price: ₹6,667/night
+      💳 Total Cost: ₹20,001
+      ⭐ Rating: 4.5/5
+      🎯 Proximity: Near Fort Kochi (to attractions)
+      📝 Description: Well-liked by travelers for its great views and reasonable pricing.
+
+   📊 Accommodation Summary: 3 options available
+   💰 Average Price: ₹6667/night
+
+🔍 SCHEMA METADATA
+--------------------
+   Generation Time: 220.3 seconds
+   Generation Status: Complete itinerary generated successfully
+   Agent Performance:
+   - RequestParser: 4.9s (completed)
+   - ActivitiesPlanner: 144.4s (completed)
+   - AccommodationSuggester: 71.0s (completed)
+
+✅ Primary schema generation complete
+============================================================
